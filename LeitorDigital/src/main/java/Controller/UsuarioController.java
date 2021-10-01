@@ -1,6 +1,7 @@
 package Controller;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 
 import Model.Usuario;
 import dev.brachtendorf.jimagehash.hash.Hash;
@@ -11,12 +12,12 @@ public class UsuarioController {
 		
 		
 	}
-	public int GerarHash(File a) throws IOException {
+	public BigInteger GerarHash(File a) throws IOException {
 		HashingAlgorithm hasher = new PerceptiveHash(32);
 
 		Hash hash0 = hasher.hash(a);
 		
-		return Integer.parseInt(hash0.toString());
+		return hash0.getHashValue();
 				
 	}
 

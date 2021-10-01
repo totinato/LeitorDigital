@@ -2,6 +2,7 @@ package Model;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 
 import Controller.UsuarioController;
 
@@ -9,8 +10,8 @@ public class Usuario {
 	private String Nome;
 	private int Permissao;
 	private File digital;
-	int hashdigital;
-	public int getHashdigital() {
+	private BigInteger hashdigital;
+	public BigInteger getHashdigital() {
 		return hashdigital;
 	}
 	public void setHashdigital(int hashdigital){
