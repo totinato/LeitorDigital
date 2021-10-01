@@ -21,5 +21,6 @@ public class DAO {
 	
 	public void close() throws Exception{		
 		con.close();
+		//aaaa
 	}
 }
