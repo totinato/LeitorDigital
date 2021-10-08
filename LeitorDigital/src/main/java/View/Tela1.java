@@ -21,11 +21,14 @@ import java.awt.Font;
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.BevelBorder;
+import java.awt.ScrollPane;
+import javax.swing.JScrollPane;
 
 public class Tela1 extends JFrame {
 
 	private JPanel contentPane;
-	private JTable tabelateste;
 
 	/**
 	 * Launch the application.
@@ -44,7 +47,7 @@ public class Tela1 extends JFrame {
 	}
 	public Tela1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 581, 519);
+		setBounds(100, 100, 390, 239);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -65,68 +68,38 @@ public class Tela1 extends JFrame {
 		setContentPane(contentPane);
 		
 		JLabel lblUsuarioNivel = new JLabel("Usuario Nivel");
+		lblUsuarioNivel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lblDados = new JLabel("Dados do funcionario");
+		JLabel lblNivel = new JLabel("Numero/Nome Usuario");
+		lblNivel.setEnabled(false);
 		
-		tabelateste = new JTable();
-		tabelateste.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tabelateste.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		tabelateste.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Tela", "FX550", "SP", "2"},
-				{"Retrovisor", "M9J", "RJ", "3"},
-				{"Aviao", "F15", "MG", "1"},
-				{"Carro", "F1", "SC", "7"},
-			},
-			new String[] {
-				"Tipo", "Dado", "Estado", "Nivel"
-			}
-		) {
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-		tabelateste.getColumnModel().getColumn(0).setResizable(false);
-		tabelateste.getColumnModel().getColumn(0).setPreferredWidth(100);
-		tabelateste.getColumnModel().getColumn(1).setResizable(false);
-		tabelateste.getColumnModel().getColumn(1).setPreferredWidth(100);
-		tabelateste.getColumnModel().getColumn(2).setResizable(false);
-		tabelateste.getColumnModel().getColumn(2).setPreferredWidth(100);
-		tabelateste.getColumnModel().getColumn(3).setResizable(false);
-		tabelateste.getColumnModel().getColumn(3).setPreferredWidth(100);
-		tabelateste.setForeground(Color.LIGHT_GRAY);
-		tabelateste.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
-		JLabel lblNivel = new JLabel("");
+		JLabel lblNewLabel = new JLabel("Seja bem-vindo(a)");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(22)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(tabelateste, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblDados)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblUsuarioNivel)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(lblNivel)))
-					.addContainerGap(415, Short.MAX_VALUE))
+					.addGap(85)
+					.addComponent(lblUsuarioNivel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(76))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(146, Short.MAX_VALUE)
+					.addComponent(lblNewLabel)
+					.addGap(130))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(135, Short.MAX_VALUE)
+					.addComponent(lblNivel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+					.addGap(102))
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblUsuarioNivel)
-						.addComponent(lblNivel))
-					.addGap(57)
-					.addComponent(lblDados)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(tabelateste, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(345, Short.MAX_VALUE))
+					.addGap(35)
+					.addComponent(lblUsuarioNivel, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(lblNivel)
+					.addGap(11)
+					.addComponent(lblNewLabel)
+					.addGap(69))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
