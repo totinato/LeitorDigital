@@ -5,24 +5,32 @@ import java.io.IOException;
 import java.math.BigInteger;
 
 import Controller.UsuarioController;
+import javafx.util.converter.BigIntegerStringConverter;
 
 public class Usuario {
 	private String Nome;
 	private int Permissao;
 	private File digital;
-	private BigInteger hashdigital;
-	public BigInteger getHashdigital() {
+	private String hashdigital;
+	
+	
+	
+	public String getHashdigital() {
 		return hashdigital;
 	}
-	public void setHashdigital(int hashdigital){
+	public void setHashdigital(File digital){
 		UsuarioController u= new UsuarioController();
 		try {
-			this.hashdigital=u.GerarHash(this.digital);
+			hashdigital=u.GerarHash(digital);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	public void setHashdigital(String hash){
+		hashdigital=hash;
+	}
+	
 	private int ID;
 	public int getID() {
 		return ID;

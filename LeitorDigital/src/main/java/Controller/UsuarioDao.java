@@ -1,5 +1,6 @@
 package Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Model.Usuario;
@@ -12,7 +13,7 @@ public class UsuarioDao extends DAO {
 			stmt = con.prepareStatement("insert into Usuario values(null,?,?,?)");
 			stmt.setString(1, p.getNome());
 			stmt.setInt(2,p.getPermissao());
-			stmt.setInt(3,p.getHashdigital());
+			stmt.setString(3,p.getHashdigital().toString());
 			stmt.execute();
 			stmt.close();
 			close();
@@ -34,7 +35,7 @@ public class UsuarioDao extends DAO {
 			open();
 			stmt = con.prepareStatement("update Usuario nome = ?, email = ? where idUsuario = ?");
 			stmt.setString(1, p.getNome());
-			stmt.setInt(2, p.getHashdigital());
+			stmt.setString(2, p.getHashdigital().toString());
 			stmt.setInt(3, p.getPermissao());
 			stmt.setInt(4, p.getID());
 
@@ -47,7 +48,7 @@ public class UsuarioDao extends DAO {
 		public Usuario finallByCod(int cod) throws Exception {
 
 				open();
-				stmt = con.prepareStatement("select * from Usuario where idUsuario = ? ");
+				stmt = con.prepareStatement("select * from Usuario where idUsuario ="+cod);
 				rs = stmt.executeQuery();			
 				Usuario p = null;
 				if (rs.next()) {
@@ -60,7 +61,7 @@ public class UsuarioDao extends DAO {
 				return p;
 		}
 
-		/*public List findAll() {
+		public List findAll() {
 			try {
 				open();
 				stmt = con.prepareStatement("select * from Usuario");
@@ -68,9 +69,10 @@ public class UsuarioDao extends DAO {
 				List lista = new ArrayList();
 				while (rs.next()) {
 					Usuario p = new Usuario();
-					p.setIdUsuario(rs.getInt("idUsuario"));
-					p.setNomeUsuario(rs.getString("nomeUsuario"));
-					p.setEmail(rs.getString("email"));
+					p.setID(rs.getInt("idUsuario"));
+					p.setNome(rs.getString("nomeUsuario"));
+					p.setPermissao(rs.getInt("email"));
+					p.setHashdigital(rs.getString("email"));
 					lista.add(p);
 				}
 				close();
@@ -80,5 +82,5 @@ public class UsuarioDao extends DAO {
 				return null;
 			}
 
-		}*/
-}
+		}
+	}
