@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
+import javax.swing.ListSelectionModel;
 
 public class Tela1 extends JFrame {
 
@@ -65,9 +66,10 @@ public class Tela1 extends JFrame {
 		
 		JLabel lblUsuarioNivel = new JLabel("Usuario Nivel");
 		
-		JLabel lblDados = new JLabel("Dados do funcion\u00E1rio");
+		JLabel lblDados = new JLabel("Dados do funcionario");
 		
 		tabelateste = new JTable();
+		tabelateste.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tabelateste.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		tabelateste.setModel(new DefaultTableModel(
 			new Object[][] {
