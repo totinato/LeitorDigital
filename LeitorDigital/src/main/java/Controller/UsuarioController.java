@@ -12,12 +12,13 @@ public class UsuarioController {
 		
 		
 	}
-	public BigInteger GerarHash(File a) throws IOException {
+	public String GerarHash(File a) throws IOException {
 		HashingAlgorithm hasher = new PerceptiveHash(32);
 
 		Hash hash0 = hasher.hash(a);
 		
-		return hash0.getHashValue();
+		return hash0.getHashValue().toString();
+		/**/
 				
 	}
 
