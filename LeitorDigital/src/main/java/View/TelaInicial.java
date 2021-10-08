@@ -65,7 +65,7 @@ public class TelaInicial extends JFrame {
 			         java.io.File f = file.getSelectedFile();
 			         UsuarioController u=new UsuarioController();
 			         try {
-						String i=u.GerarHash(f);
+						BigInteger i=u.GerarHash(f);
 						System.err.println(i);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
