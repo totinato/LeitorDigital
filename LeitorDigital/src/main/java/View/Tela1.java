@@ -59,9 +59,6 @@ public class Tela1 extends JFrame {
 		
 		JMenu mnNewMenu_1_1 = new JMenu("Sobre");
 		menuBar.add(mnNewMenu_1_1);
-		
-		JMenu mnNewMenu_1_1_1 = new JMenu("Ajuda");
-		menuBar.add(mnNewMenu_1_1_1);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
