@@ -30,7 +30,7 @@ public class Usuario {
 	public void setHashdigital(String hash){
 		hashdigital=hash;
 	}
-	
+	/**/
 	private int ID;
 	public int getID() {
 		return ID;

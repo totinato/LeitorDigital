@@ -18,6 +18,7 @@ public class UsuarioController {
 		Hash hash0 = hasher.hash(a);
 		
 		return hash0.getHashValue().toString();
+		/**/
 				
 	}
 

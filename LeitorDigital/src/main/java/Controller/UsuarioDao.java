@@ -27,7 +27,7 @@ public class UsuarioDao extends DAO {
 			stmt.execute();
 			stmt.close();
 			close();
-
+			/**/
 		}
 
 		public void update(Usuario p) throws Exception {
