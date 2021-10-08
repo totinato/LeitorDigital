@@ -19,6 +19,7 @@ import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
+import javax.swing.SwingConstants;
 
 public class Tela1 extends JFrame {
 
@@ -48,12 +49,15 @@ public class Tela1 extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Perfil");
+		mnNewMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(mnNewMenu);
 		
 		JMenu mnNveis = new JMenu("Editar");
+		mnNveis.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(mnNveis);
 		
 		JMenu mnNewMenu_1_1 = new JMenu("Sobre");
+		mnNewMenu_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(mnNewMenu_1_1);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -67,13 +71,13 @@ public class Tela1 extends JFrame {
 		tabelateste.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		tabelateste.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
+				{"Tela", "FX550", "SP", "2"},
+				{"Retrovisor", "M9J", "RJ", "3"},
+				{"Aviao", "F15", "MG", "1"},
+				{"Carro", "F1", "SC", "7"},
 			},
 			new String[] {
-				"Tipo", "Dado", "Estado", "N\u00EDvel"
+				"Tipo", "Dado", "Estado", "Nivel"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
