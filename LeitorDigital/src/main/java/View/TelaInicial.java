@@ -65,7 +65,7 @@ public class TelaInicial extends JFrame {
 			         java.io.File f = file.getSelectedFile();
 			         UsuarioController u=new UsuarioController();
 			         try {
-						BigInteger i=u.GerarHash(f);
+						String i=u.GerarHash(f);
 						System.err.println(i);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
@@ -75,9 +75,10 @@ public class TelaInicial extends JFrame {
 			      }
 			}
 		});
+		Tela1 tela = new Tela1();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(164)
 					.addComponent(btnNewButton)
