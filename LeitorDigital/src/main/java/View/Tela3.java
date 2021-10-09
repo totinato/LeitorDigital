@@ -30,6 +30,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JButton;
+import javax.swing.JMenuItem;
 
 public class Tela3 extends JFrame {
 
@@ -66,6 +67,9 @@ public class Tela3 extends JFrame {
 		JMenu mnNewMenu = new JMenu("Perfil");
 		mnNewMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(mnNewMenu);
+		
+		JMenuItem menuItem = new JMenuItem("New menu item");
+		mnNewMenu.add(menuItem);
 		
 		JMenu mnNveis = new JMenu("Editar");
 		mnNveis.setHorizontalAlignment(SwingConstants.CENTER);

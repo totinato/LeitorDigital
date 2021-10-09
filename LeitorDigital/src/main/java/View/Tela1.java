@@ -10,6 +10,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -17,6 +18,9 @@ import javax.swing.JTable;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
+
+import Model.Usuario;
+
 import java.awt.Font;
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
@@ -33,19 +37,7 @@ public class Tela1 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Tela1 frame = new Tela1();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	public Tela1() {
+	public Tela1(Usuario u) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 390, 239);
 		
@@ -67,28 +59,49 @@ public class Tela1 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblUsuarioNivel = new JLabel("Usuario Nivel");
+		JLabel lblUsuarioNivel = new JLabel("Usuario Nivel:"+u.getPermissao());
 		lblUsuarioNivel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lblNivel = new JLabel("Numero/Nome Usuario");
+		JLabel lblNivel = new JLabel("ID: "+u.getID());
+		mnNveis.setEnabled(false);
+		if(u.getPermissao()==3) {
+			mnNveis.setEnabled(true);
+			JOptionPane.showMessageDialog(null,"seja bem vindo Administrador "+u.getNome());
+		}
+		if(u.getPermissao()==2) {
+			JOptionPane.showMessageDialog(null,"seja bem vindo Usuario "+u.getNome());
+			
+		}
+		if(u.getPermissao()==1) {
+			JOptionPane.showMessageDialog(null,"seja bem vindo visitante "+u.getNome());
+			
+		}
 		lblNivel.setEnabled(false);
 		
 		JLabel lblNewLabel = new JLabel("Seja bem-vindo(a)");
+		
+		JLabel lblNome = new JLabel("Nome: "+u.getNome());
+		lblNome.setEnabled(false);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(142, Short.MAX_VALUE)
+					.addComponent(lblNewLabel)
+					.addGap(134))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(85)
-					.addComponent(lblUsuarioNivel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(76))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(146, Short.MAX_VALUE)
-					.addComponent(lblNewLabel)
-					.addGap(130))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(135, Short.MAX_VALUE)
-					.addComponent(lblNivel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-					.addGap(102))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNome, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addComponent(lblNivel, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap())
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addComponent(lblUsuarioNivel, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+								.addGap(76)))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -97,9 +110,11 @@ public class Tela1 extends JFrame {
 					.addComponent(lblUsuarioNivel, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblNivel)
-					.addGap(11)
+					.addGap(4)
+					.addComponent(lblNome)
+					.addGap(18)
 					.addComponent(lblNewLabel)
-					.addGap(69))
+					.addGap(44))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

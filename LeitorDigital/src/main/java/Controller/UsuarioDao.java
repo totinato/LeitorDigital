@@ -45,17 +45,18 @@ public class UsuarioDao extends DAO {
 
 		}
 
-		public Usuario finallByCod(int cod) throws Exception {
+		public Usuario finallByCod(String cod) throws Exception {
 
 				open();
-				stmt = con.prepareStatement("select * from Usuario where idUsuario ="+cod);
+				stmt = con.prepareStatement("select * from Usuario where Hash ='"+cod+"'");
 				rs = stmt.executeQuery();			
 				Usuario p = null;
 				if (rs.next()) {
-					//p = new Usuario();
-					//p.setIdUsuario(rs.getInt("idUsuario"));
-					//p.setNomeUsuario(rs.getString("nomeUsuario"));
-					//p.setEmail(rs.getString("email"));				
+					p = new Usuario();
+					p.setNome(rs.getString("Nome"));
+					p.setPermissao(rs.getInt("Permissao"));
+					p.setID(rs.getInt("ID"));
+					p.setHashdigital(rs.getString("Hash"));
 				}
 				close();
 				return p;

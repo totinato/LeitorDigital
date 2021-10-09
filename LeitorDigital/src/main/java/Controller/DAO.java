@@ -15,8 +15,8 @@ public class DAO {
 	
 	public void open() throws Exception{
 		
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("caminho", "usuario", "senha");		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aps?characterEncoding=utf8&useSSL=false","root","root");	
 	}
 	
 	public void close() throws Exception{		

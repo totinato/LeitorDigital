@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Controller.UsuarioController;
+import Controller.UsuarioDao;
+import Model.Usuario;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -46,6 +48,7 @@ public class TelaInicial extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaInicial() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -54,6 +57,7 @@ public class TelaInicial extends JFrame {
 		
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser file = new JFileChooser();
 			      file.setMultiSelectionEnabled(true);
@@ -66,16 +70,23 @@ public class TelaInicial extends JFrame {
 			         UsuarioController u=new UsuarioController();
 			         try {
 						String i=u.GerarHash(f);
-						System.err.println(i);
-					} catch (IOException e1) {
+						UsuarioDao logar= new UsuarioDao();
+						Usuario login=null;
+						login=logar.finallByCod(i);
+						if(login!=null) {
+							TelaInicial.this.dispose();
+							Tela1 t=new Tela1(login);
+							t.show();
+						}
+					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-			         System.err.println(f.getPath());
+			         
 			      }
 			}
 		});
-		Tela1 tela = new Tela1();
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
