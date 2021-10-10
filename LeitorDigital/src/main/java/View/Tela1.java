@@ -29,6 +29,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.BevelBorder;
 import java.awt.ScrollPane;
 import javax.swing.JScrollPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Tela1 extends JFrame {
 
@@ -49,6 +51,14 @@ public class Tela1 extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenu mnNveis = new JMenu("Editar");
+		mnNveis.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Tela3 t=new Tela3();
+				t.show();
+				Tela1.this.dispose();
+			}
+		});
 		mnNveis.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(mnNveis);
 		

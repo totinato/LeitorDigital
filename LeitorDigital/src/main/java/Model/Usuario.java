@@ -1,8 +1,10 @@
 package Model;
 
 import java.io.File;
+import Controller.UsuarioDao;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.List;
 
 import Controller.UsuarioController;
 import javafx.util.converter.BigIntegerStringConverter;
@@ -12,7 +14,7 @@ public class Usuario {
 	private int Permissao;
 	private File digital;
 	private String hashdigital;
-	
+	UsuarioDao dao=new UsuarioDao();
 	
 	
 	public String getHashdigital() {
@@ -56,5 +58,23 @@ public class Usuario {
 	public void setDigital(File digital) {
 		this.digital = digital;
 	}
+	public Usuario pegarusuario(String a) {
+		try {
+			
+			return dao.finallByCod(Integer.parseInt(a));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Usuario p=null;
+			return p;
+		}
+	}
+	public List<Usuario> Achartodos(){
+		List<Usuario> b=dao.findAll();
+		return b;
+	}
+		
+		
+	
 	
 }

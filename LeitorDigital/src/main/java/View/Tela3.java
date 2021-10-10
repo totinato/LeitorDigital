@@ -28,18 +28,23 @@ import javax.swing.JScrollPane;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import Controller.UsuarioDao;
+import Model.Usuario;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
 
 public class Tela3 extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tabelateste;
 	private JTextField txtNome;
-	private JTextField txtSetor;
 	private JTextField txtPermissao;
-	private JTextField txtCargo;
 
 	/**
 	 * Launch the application.
@@ -89,26 +94,48 @@ public class Tela3 extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		
 		tabelateste = new JTable();
+		tabelateste.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+					if(e.getClickCount() == 1){
+			            Object obj= tabelateste.getValueAt(tabelateste.getSelectedRow(),0);
+			            txtNome.setText((String) tabelateste.getValueAt(tabelateste.getSelectedRow(),1));
+			            txtPermissao.setText((String) tabelateste.getValueAt(tabelateste.getSelectedRow(),3));
+			            /*Usuario u=null;
+			            u.pegarusuario(obj.toString());*/
+
+			        }
+				
+			}
+		});
 		scrollPane.setViewportView(tabelateste);
 		tabelateste.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		tabelateste.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		tabelateste.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		List<Usuario> c=new Usuario().Achartodos();
+		List y=null;
+		int cont=0;
+		Object[][] ob=new String[c.size()][4];
+        int i=0;
+        for (Usuario mov : c) {
+            ob[i][0]=String.valueOf(mov.getID());
+            ob[i][1]=String.valueOf(mov.getNome());
+            ob[i][2]=String.valueOf(mov.getHashdigital());
+            ob[i][3]=String.valueOf(mov.getPermissao());
+            i++;
+        }
 		tabelateste.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Tela", "FX550", "SP", "2"},
-				{"Retrovisor", "M9J", "RJ", "3"},
-				{"Aviao", "F15", "MG", "1"},
-				{"Carro", "F1", "SC", "7"},
-			},
+			ob,
 			new String[] {
-				"Nome", "Setor", "Cargo", "Permissao"
+				"ID", "Nome", "Hash", "Permissao"
 			}
 		) {
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false
+			Class[] columnTypes = new Class[] {
+				Integer.class, String.class, String.class, Integer.class
 			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
 			}
 		});
 		tabelateste.getColumnModel().getColumn(0).setResizable(false);
@@ -157,33 +184,19 @@ public class Tela3 extends JFrame {
 		JLabel lblNewLabel = new JLabel("Nome");
 		panel.add(lblNewLabel, "2, 2, center, default");
 		
-		JLabel lblNewLabel_1 = new JLabel("Setor");
-		panel.add(lblNewLabel_1, "4, 2, center, default");
-		
-		JLabel lblNewLabel_2 = new JLabel("Cargo");
-		panel.add(lblNewLabel_2, "6, 2, center, default");
-		
 		JLabel lblNewLabel_3 = new JLabel("Permissao");
-		panel.add(lblNewLabel_3, "8, 2, center, default");
+		panel.add(lblNewLabel_3, "6, 2, center, default");
 		
 		txtNome = new JTextField();
 		panel.add(txtNome, "2, 4, fill, default");
 		txtNome.setColumns(10);
 		
-		txtSetor = new JTextField();
-		panel.add(txtSetor, "4, 4, fill, default");
-		txtSetor.setColumns(10);
-		
-		txtCargo = new JTextField();
-		panel.add(txtCargo, "6, 4, fill, default");
-		txtCargo.setColumns(10);
-		
 		txtPermissao = new JTextField();
-		panel.add(txtPermissao, "8, 4, fill, default");
+		panel.add(txtPermissao, "6, 4, fill, default");
 		txtPermissao.setColumns(10);
 		
 		JButton btSalvar = new JButton("Salvar Dados");
-		panel.add(btSalvar, "4, 8");
+		panel.add(btSalvar, "2, 8");
 		
 		JButton btExcluir = new JButton("Excluir");
 		panel.add(btExcluir, "6, 8");

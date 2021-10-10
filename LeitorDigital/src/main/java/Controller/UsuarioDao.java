@@ -61,19 +61,35 @@ public class UsuarioDao extends DAO {
 				close();
 				return p;
 		}
+		public Usuario finallByCod(int cod) throws Exception {
 
-		public List findAll() {
+			open();
+			stmt = con.prepareStatement("select * from Usuario where ID ='"+cod+"'");
+			rs = stmt.executeQuery();			
+			Usuario p = null;
+			if (rs.next()) {
+				p = new Usuario();
+				p.setNome(rs.getString("Nome"));
+				p.setPermissao(rs.getInt("Permissao"));
+				p.setID(rs.getInt("ID"));
+				p.setHashdigital(rs.getString("Hash"));
+			}
+			close();
+			return p;
+	}
+
+		public List<Usuario> findAll() {
 			try {
 				open();
 				stmt = con.prepareStatement("select * from Usuario");
 				rs = stmt.executeQuery();
-				List lista = new ArrayList();
+				List<Usuario> lista = new ArrayList();
 				while (rs.next()) {
 					Usuario p = new Usuario();
-					p.setID(rs.getInt("idUsuario"));
-					p.setNome(rs.getString("nomeUsuario"));
-					p.setPermissao(rs.getInt("email"));
-					p.setHashdigital(rs.getString("email"));
+					p.setNome(rs.getString("Nome"));
+					p.setPermissao(rs.getInt("Permissao"));
+					p.setID(rs.getInt("ID"));
+					p.setHashdigital(rs.getString("Hash"));
 					lista.add(p);
 				}
 				close();
