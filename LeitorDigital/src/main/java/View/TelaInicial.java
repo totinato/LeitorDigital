@@ -70,12 +70,14 @@ public class TelaInicial extends JFrame {
 			         UsuarioController u=new UsuarioController();
 			         try {
 						String i=u.GerarHash(f);
+						
 						UsuarioDao logar= new UsuarioDao();
 						Usuario login=null;
 						login=logar.finallByCod(i);
+						System.out.println(i);
 						if(login!=null) {
 							TelaInicial.this.dispose();
-							Tela1 t=new Tela1(login);
+							Home t=new Home(login);
 							t.show();
 						}
 					} catch (Exception e1) {

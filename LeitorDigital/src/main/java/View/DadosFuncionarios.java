@@ -39,7 +39,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-public class Tela3 extends JFrame {
+public class DadosFuncionarios extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tabelateste;
@@ -49,19 +49,7 @@ public class Tela3 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Tela3 frame = new Tela3();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	public Tela3() {
+	public DadosFuncionarios(int a) {
 		setTitle("Editor de Funcion\u00E1rios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 581, 519);
@@ -86,6 +74,7 @@ public class Tela3 extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		
 		
 		JLabel lblUsuarioNivel = new JLabel("Registro de Funcionarios");
 		

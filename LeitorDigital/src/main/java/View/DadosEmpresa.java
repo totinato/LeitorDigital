@@ -10,6 +10,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -29,10 +30,16 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
+
+import Model.Empresa;
+
 import javax.swing.JButton;
 import java.awt.Dialog.ModalExclusionType;
+import java.util.List;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class Tela2 extends JFrame {
+public class DadosEmpresa extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tabelateste;
@@ -40,19 +47,7 @@ public class Tela2 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Tela2 frame = new Tela2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	public Tela2() {
+	public DadosEmpresa(int a) {
 		setTitle("Dados dos Funcion\u00E1rios");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,10 +76,47 @@ public class Tela2 extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		
 		tabelateste = new JTable();
+		tabelateste.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount() == 1){
+					if(a==3) {
+					Empresa em = new Empresa();
+		            em.setID(Integer.parseInt( tabelateste.getValueAt(tabelateste.getSelectedRow(),0).toString()));
+		            em.setNome(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
+		            em.setEndereco(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
+		            em.setCnpj(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
+		            em.setCep(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
+		            em.setRamo(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
+		            em.setAgrotoxico(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
+		            em.setToxidade(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
+					}else {
+						JOptionPane.showMessageDialog(null, "Voce nao tem acesso para editar esses dados");
+					}
+		        }
+			}
+		});
 		scrollPane.setViewportView(tabelateste);
 		tabelateste.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		tabelateste.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		tabelateste.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		List<Empresa> c=new Empresa().Achartodos();
+		List y=null;
+		int cont=0;
+		Object[][] ob=new String[c.size()][7];
+        int i=0;
+        for (Empresa mov : c) {
+            ob[i][0]=String.valueOf(mov.getID());
+            ob[i][1]=String.valueOf(mov.getNome());
+            ob[i][2]=String.valueOf(mov.getEndereco());
+            ob[i][3]=String.valueOf(mov.getCnpj());
+            ob[i][4]=String.valueOf(mov.getCep());
+            ob[i][5]=String.valueOf(mov.getRamo());
+            ob[i][6]=String.valueOf(mov.getAgrotoxico());
+            ob[i][7]=String.valueOf(mov.getToxidade());
+            i++;
+        }
+		
 		tabelateste.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"Tela", "FX550", "SP", "2"},
@@ -93,7 +125,8 @@ public class Tela2 extends JFrame {
 				{"Carro", "F1", "SC", "7"},
 			},
 			new String[] {
-				"Nome", "Setor", "Cargo", "Permissao"
+				"ID","Nome", "Endereço", "Cnpj", "Cep","Ramo","Agrotoxico","Toxicidade"
+
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {

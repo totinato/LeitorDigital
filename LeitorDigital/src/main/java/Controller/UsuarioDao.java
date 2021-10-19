@@ -33,7 +33,7 @@ public class UsuarioDao extends DAO {
 		public void update(Usuario p) throws Exception {
 
 			open();
-			stmt = con.prepareStatement("update Usuario nome = ?, email = ? where idUsuario = ?");
+			stmt = con.prepareStatement("update Usuario set nome = ?, email = ? where idUsuario = ?");
 			stmt.setString(1, p.getNome());
 			stmt.setString(2, p.getHashdigital().toString());
 			stmt.setInt(3, p.getPermissao());
@@ -84,8 +84,8 @@ public class UsuarioDao extends DAO {
 				stmt = con.prepareStatement("select * from Usuario");
 				rs = stmt.executeQuery();
 				List<Usuario> lista = new ArrayList();
+				Usuario p = new Usuario();
 				while (rs.next()) {
-					Usuario p = new Usuario();
 					p.setNome(rs.getString("Nome"));
 					p.setPermissao(rs.getInt("Permissao"));
 					p.setID(rs.getInt("ID"));

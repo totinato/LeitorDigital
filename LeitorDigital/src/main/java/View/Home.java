@@ -31,15 +31,16 @@ import java.awt.ScrollPane;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JMenuItem;
 
-public class Tela1 extends JFrame {
+public class Home extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	public Tela1(Usuario u) {
+	public Home(Usuario u) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 390, 239);
 		
@@ -51,14 +52,7 @@ public class Tela1 extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenu mnNveis = new JMenu("Editar");
-		mnNveis.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Tela3 t=new Tela3();
-				t.show();
-				Tela1.this.dispose();
-			}
-		});
+
 		mnNveis.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(mnNveis);
 		
@@ -74,6 +68,28 @@ public class Tela1 extends JFrame {
 		
 		JLabel lblNivel = new JLabel("ID: "+u.getID());
 		mnNveis.setEnabled(false);
+		
+		JMenuItem opcUsuario = new JMenuItem("Usuarios");
+		mnNveis.add(opcUsuario);
+		
+		JMenuItem opcEmpresa = new JMenuItem("Empresas");
+		opcEmpresa.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DadosEmpresa t=new DadosEmpresa(u.getID());
+				t.show();
+				Home.this.dispose();
+			}
+		});
+		mnNveis.add(opcEmpresa);
+		opcUsuario.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DadosFuncionarios t=new DadosFuncionarios(u.getID());
+				t.show();
+				Home.this.dispose();
+			}
+		});
 		if(u.getPermissao()==3) {
 			mnNveis.setEnabled(true);
 			JOptionPane.showMessageDialog(null,"seja bem vindo Administrador "+u.getNome());
