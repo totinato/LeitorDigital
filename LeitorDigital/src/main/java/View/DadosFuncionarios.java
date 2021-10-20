@@ -57,30 +57,36 @@ public class DadosFuncionarios extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Perfil");
-		mnNewMenu.setHorizontalAlignment(SwingConstants.CENTER);
-		menuBar.add(mnNewMenu);
-		
-		JMenuItem menuItem = new JMenuItem("New menu item");
-		mnNewMenu.add(menuItem);
+		JMenu mnPerfil = new JMenu("Perfil");
+		mnPerfil.setHorizontalAlignment(SwingConstants.CENTER);
+		menuBar.add(mnPerfil);
 		
 		JMenu mnNveis = new JMenu("Editar");
 		mnNveis.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(mnNveis);
 		
-		JMenu mnNewMenu_1_1 = new JMenu("Sobre");
-		mnNewMenu_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		menuBar.add(mnNewMenu_1_1);
+		JMenuItem opcUsuario = new JMenuItem("Usuario");
+		mnNveis.add(opcUsuario);
+		
+		JMenuItem opcEmpresa = new JMenuItem("Empresa");
+		mnNveis.add(opcEmpresa);
+		
+		JMenu mnSobre = new JMenu("Sobre");
+		mnSobre.setHorizontalAlignment(SwingConstants.CENTER);
+		menuBar.add(mnSobre);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		
 		JLabel lblUsuarioNivel = new JLabel("Registro de Funcionarios");
+		lblUsuarioNivel.setBounds(32, 19, 118, 14);
 		
 		JLabel lblDados = new JLabel("Dados do funcionario");
+		lblDados.setBounds(32, 263, 101, 14);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(70, 288, 452, 165);
 		
 		tabelateste = new JTable();
 		tabelateste.addMouseListener(new MouseAdapter() {
@@ -136,21 +142,11 @@ public class DadosFuncionarios extends JFrame {
 		tabelateste.getColumnModel().getColumn(3).setResizable(false);
 		tabelateste.getColumnModel().getColumn(3).setPreferredWidth(100);
 		tabelateste.setForeground(Color.BLACK);
-		contentPane.setLayout(new FormLayout(new ColumnSpec[] {
-				ColumnSpec.decode("27px"),
-				ColumnSpec.decode("496px:grow"),},
-			new RowSpec[] {
-				FormSpecs.PARAGRAPH_GAP_ROWSPEC,
-				RowSpec.decode("14px"),
-				RowSpec.decode("152px:grow"),
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				RowSpec.decode("14px"),
-				FormSpecs.UNRELATED_GAP_ROWSPEC,
-				RowSpec.decode("165px"),}));
+		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		contentPane.add(panel, "2, 3, center, center");
+		panel.setBounds(174, 83, 243, 100);
+		contentPane.add(panel);
 		panel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormSpecs.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
@@ -191,9 +187,10 @@ public class DadosFuncionarios extends JFrame {
 		panel.add(btExcluir, "6, 8");
 		
 		JButton btLimpar = new JButton("Limpar");
-		contentPane.add(btLimpar, "2, 5, center, center");
-		contentPane.add(lblDados, "2, 6, left, top");
-		contentPane.add(lblUsuarioNivel, "2, 2, left, top");
-		contentPane.add(scrollPane, "2, 8, center, center");
+		btLimpar.setBounds(264, 240, 63, 23);
+		contentPane.add(btLimpar);
+		contentPane.add(lblDados);
+		contentPane.add(lblUsuarioNivel);
+		contentPane.add(scrollPane);
 	}
 }

@@ -38,6 +38,7 @@ import java.awt.Dialog.ModalExclusionType;
 import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JMenuItem;
 
 public class DadosEmpresa extends JFrame {
 
@@ -56,24 +57,32 @@ public class DadosEmpresa extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Perfil");
-		mnNewMenu.setHorizontalAlignment(SwingConstants.CENTER);
-		menuBar.add(mnNewMenu);
+		JMenu mnPerfil = new JMenu("Perfil");
+		mnPerfil.setHorizontalAlignment(SwingConstants.CENTER);
+		menuBar.add(mnPerfil);
 		
 		JMenu mnNveis = new JMenu("Editar");
 		mnNveis.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(mnNveis);
 		
-		JMenu mnNewMenu_1_1 = new JMenu("Sobre");
-		mnNewMenu_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		menuBar.add(mnNewMenu_1_1);
+		JMenuItem opcUsuario = new JMenuItem("Usuario");
+		mnNveis.add(opcUsuario);
+		
+		JMenuItem opcEmpresa = new JMenuItem("Empresa");
+		mnNveis.add(opcEmpresa);
+		
+		JMenu mnSobre = new JMenu("Sobre");
+		mnSobre.setHorizontalAlignment(SwingConstants.CENTER);
+		menuBar.add(mnSobre);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		JLabel lblDados = new JLabel("Dados do funcionario");
+		lblDados.setBounds(15, 19, 101, 14);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(51, 44, 452, 231);
 		
 		tabelateste = new JTable();
 		tabelateste.addMouseListener(new MouseAdapter() {
@@ -145,20 +154,12 @@ public class DadosEmpresa extends JFrame {
 		tabelateste.getColumnModel().getColumn(3).setResizable(false);
 		tabelateste.getColumnModel().getColumn(3).setPreferredWidth(100);
 		tabelateste.setForeground(Color.BLACK);
-		contentPane.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.UNRELATED_GAP_COLSPEC,
-				ColumnSpec.decode("525px"),},
-			new RowSpec[] {
-				FormSpecs.PARAGRAPH_GAP_ROWSPEC,
-				RowSpec.decode("14px"),
-				FormSpecs.UNRELATED_GAP_ROWSPEC,
-				RowSpec.decode("231px"),
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
-		contentPane.add(lblDados, "2, 2, left, center");
-		contentPane.add(scrollPane, "2, 4, center, center");
+		contentPane.setLayout(null);
+		contentPane.add(lblDados);
+		contentPane.add(scrollPane);
 		
 		JButton btVoltar = new JButton("Voltar");
-		contentPane.add(btVoltar, "2, 6, center, center");
+		btVoltar.setBounds(247, 281, 61, 23);
+		contentPane.add(btVoltar);
 	}
 }

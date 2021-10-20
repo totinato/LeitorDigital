@@ -47,18 +47,18 @@ public class Home extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Perfil");
-		mnNewMenu.setHorizontalAlignment(SwingConstants.CENTER);
-		menuBar.add(mnNewMenu);
+		JMenu mnPerfil = new JMenu("Perfil");
+		mnPerfil.setHorizontalAlignment(SwingConstants.CENTER);
+		menuBar.add(mnPerfil);
 		
 		JMenu mnNveis = new JMenu("Editar");
 
 		mnNveis.setHorizontalAlignment(SwingConstants.CENTER);
 		menuBar.add(mnNveis);
 		
-		JMenu mnNewMenu_1_1 = new JMenu("Sobre");
-		mnNewMenu_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		menuBar.add(mnNewMenu_1_1);
+		JMenu mnSobre = new JMenu("Sobre");
+		mnSobre.setHorizontalAlignment(SwingConstants.CENTER);
+		menuBar.add(mnSobre);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
