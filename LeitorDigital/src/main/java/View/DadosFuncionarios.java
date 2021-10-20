@@ -50,7 +50,7 @@ public class DadosFuncionarios extends JFrame {
 	 * Launch the application.
 	 */
 	public DadosFuncionarios(int a) {
-		setTitle("Editor de Funcion\u00E1rios");
+		setTitle("Editar Usu\u00E1rios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 581, 519);
 		
@@ -79,14 +79,14 @@ public class DadosFuncionarios extends JFrame {
 		setContentPane(contentPane);
 		
 		
-		JLabel lblUsuarioNivel = new JLabel("Registro de Funcionarios");
+		JLabel lblUsuarioNivel = new JLabel("Registro de Usu\u00E1rios");
 		lblUsuarioNivel.setBounds(32, 19, 118, 14);
 		
-		JLabel lblDados = new JLabel("Dados do funcionario");
+		JLabel lblDados = new JLabel("Dados do Usu\u00E1rio");
 		lblDados.setBounds(32, 263, 101, 14);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(70, 288, 452, 165);
+		scrollPane.setBounds(70, 288, 452, 159);
 		
 		tabelateste = new JTable();
 		tabelateste.addMouseListener(new MouseAdapter() {
@@ -123,7 +123,7 @@ public class DadosFuncionarios extends JFrame {
 		tabelateste.setModel(new DefaultTableModel(
 			ob,
 			new String[] {
-				"ID", "Nome", "Hash", "Permissao"
+				"ID", "Nome", "Hash", "Nível"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
@@ -145,46 +145,56 @@ public class DadosFuncionarios extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(174, 83, 243, 100);
+		panel.setBounds(20, 84, 520, 100);
 		contentPane.add(panel);
-		panel.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),},
-			new RowSpec[] {
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
+		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nome");
-		panel.add(lblNewLabel, "2, 2, center, default");
+		lblNewLabel.setBounds(45, 6, 27, 14);
+		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_3 = new JLabel("Permissao");
-		panel.add(lblNewLabel_3, "6, 2, center, default");
+		JLabel lblNewLabel_3 = new JLabel("N\u00EDvel");
+		lblNewLabel_3.setBounds(168, 6, 23, 14);
+		panel.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_1 = new JLabel("Hash");
+		lblNewLabel_1.setBounds(259, 6, 95, 14);
+		panel.add(lblNewLabel_1);
 		
 		txtNome = new JTextField();
-		panel.add(txtNome, "2, 4, fill, default");
+		txtNome.setBounds(6, 26, 105, 20);
+		panel.add(txtNome);
 		txtNome.setColumns(10);
 		
 		txtPermissao = new JTextField();
-		panel.add(txtPermissao, "6, 4, fill, default");
+		txtPermissao.setBounds(132, 26, 96, 20);
+		panel.add(txtPermissao);
 		txtPermissao.setColumns(10);
 		
+		JLabel lblHash = new JLabel("");
+		lblHash.setBounds(259, 36, 232, 0);
+		panel.add(lblHash);
+		
+		JLabel lblDigitalConf = new JLabel("Digital N\u00E3o Inserida");
+		lblDigitalConf.setBounds(259, 54, 95, 14);
+		lblDigitalConf.setForeground(Color.RED);
+		panel.add(lblDigitalConf);
+		
 		JButton btSalvar = new JButton("Salvar Dados");
-		panel.add(btSalvar, "2, 8");
+		btSalvar.setBounds(6, 77, 105, 23);
+		panel.add(btSalvar);
 		
 		JButton btExcluir = new JButton("Excluir");
-		panel.add(btExcluir, "6, 8");
+		btExcluir.setBounds(132, 77, 96, 23);
+		panel.add(btExcluir);
+		
+		JButton btnDigital = new JButton("Inserir Digital");
+		btnDigital.setBounds(259, 77, 95, 23);
+		panel.add(btnDigital);
+		
+		JButton btnNovoUsuario = new JButton("Inserir Novo Usu\u00E1rio");
+		btnNovoUsuario.setBounds(360, 77, 131, 23);
+		panel.add(btnNovoUsuario);
 		
 		JButton btLimpar = new JButton("Limpar");
 		btLimpar.setBounds(264, 240, 63, 23);
