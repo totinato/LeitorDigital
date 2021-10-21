@@ -40,13 +40,13 @@ public class EmpresaDao extends DAO {
 			open();
 			stmt = con.prepareStatement("update Empresa set nome = ?, email = ? where idEmpresa = ?");
 			stmt.setString(1, p.getNome());
-			stmt.setString(1, p.getEndereco());
-			stmt.setString(1, p.getCnpj());
-			stmt.setString(1, p.getCep());
-			stmt.setString(1, p.getRamo());
-			stmt.setString(1, p.getAgrotoxico());
-			stmt.setString(1, p.getToxidade());
-			stmt.setInt(4, p.getID());
+			stmt.setString(2, p.getEndereco());
+			stmt.setString(3, p.getCnpj());
+			stmt.setString(4, p.getCep());
+			stmt.setString(5, p.getRamo());
+			stmt.setString(6, p.getAgrotoxico());
+			stmt.setString(7, p.getToxidade());
+			stmt.setInt(8, p.getID());
 
 			stmt.execute();
 			stmt.close();
@@ -101,8 +101,9 @@ public class EmpresaDao extends DAO {
 				stmt = con.prepareStatement("select * from Empresa");
 				rs = stmt.executeQuery();
 				List<Empresa> lista = new ArrayList();
-				Empresa p = new Empresa();
+				
 				while (rs.next()) {
+					Empresa p = new Empresa();
 					p.setID(rs.getInt("ID"));
 					p.setNome(rs.getString("Nome"));
 					p.setEndereco(rs.getString("Endereco"));

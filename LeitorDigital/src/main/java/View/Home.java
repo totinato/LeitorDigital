@@ -32,6 +32,8 @@ import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Home extends JFrame {
 
@@ -70,26 +72,22 @@ public class Home extends JFrame {
 		mnNveis.setEnabled(false);
 		
 		JMenuItem opcUsuario = new JMenuItem("Usuarios");
+		opcUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DadosFuncionarios t=new DadosFuncionarios(u.getPermissao());
+				t.show();
+			}
+		});
 		mnNveis.add(opcUsuario);
 		
 		JMenuItem opcEmpresa = new JMenuItem("Empresas");
-		opcEmpresa.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				DadosEmpresa t=new DadosEmpresa(u.getID());
+		opcEmpresa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DadosEmpresa t=new DadosEmpresa(u.getPermissao());
 				t.show();
-				Home.this.dispose();
 			}
 		});
 		mnNveis.add(opcEmpresa);
-		opcUsuario.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				DadosFuncionarios t=new DadosFuncionarios(u.getID());
-				t.show();
-				Home.this.dispose();
-			}
-		});
 		if(u.getPermissao()==3) {
 			mnNveis.setEnabled(true);
 			JOptionPane.showMessageDialog(null,"seja bem vindo Administrador "+u.getNome());

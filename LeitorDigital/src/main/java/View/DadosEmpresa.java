@@ -39,6 +39,8 @@ import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DadosEmpresa extends JFrame {
 
@@ -51,29 +53,8 @@ public class DadosEmpresa extends JFrame {
 	public DadosEmpresa(int a) {
 		setTitle("Dados dos Funcion\u00E1rios");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 581, 388);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu mnPerfil = new JMenu("Perfil");
-		mnPerfil.setHorizontalAlignment(SwingConstants.CENTER);
-		menuBar.add(mnPerfil);
-		
-		JMenu mnNveis = new JMenu("Editar");
-		mnNveis.setHorizontalAlignment(SwingConstants.CENTER);
-		menuBar.add(mnNveis);
-		
-		JMenuItem opcUsuario = new JMenuItem("Usuario");
-		mnNveis.add(opcUsuario);
-		
-		JMenuItem opcEmpresa = new JMenuItem("Empresa");
-		mnNveis.add(opcEmpresa);
-		
-		JMenu mnSobre = new JMenu("Sobre");
-		mnSobre.setHorizontalAlignment(SwingConstants.CENTER);
-		menuBar.add(mnSobre);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -93,14 +74,17 @@ public class DadosEmpresa extends JFrame {
 					Empresa em = new Empresa();
 		            em.setID(Integer.parseInt( tabelateste.getValueAt(tabelateste.getSelectedRow(),0).toString()));
 		            em.setNome(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
-		            em.setEndereco(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
-		            em.setCnpj(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
-		            em.setCep(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
-		            em.setRamo(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
-		            em.setAgrotoxico(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
-		            em.setToxidade(tabelateste.getValueAt(tabelateste.getSelectedRow(),1).toString());
+		            em.setEndereco(tabelateste.getValueAt(tabelateste.getSelectedRow(),2).toString());
+		            em.setCnpj(tabelateste.getValueAt(tabelateste.getSelectedRow(),3).toString());
+		            em.setCep(tabelateste.getValueAt(tabelateste.getSelectedRow(),4).toString());
+		            em.setRamo(tabelateste.getValueAt(tabelateste.getSelectedRow(),5).toString());
+		            em.setAgrotoxico(tabelateste.getValueAt(tabelateste.getSelectedRow(),6).toString());
+		            em.setToxidade(tabelateste.getValueAt(tabelateste.getSelectedRow(),7).toString());
+		            EditarEmpresa ed= new EditarEmpresa(em);
+		            ed.show();
 					}else {
-						JOptionPane.showMessageDialog(null, "Voce nao tem acesso para editar esses dados");
+						JOptionPane.showMessageDialog(null, "Voce nao tem acesso para editar esses dados"+a);
+						
 					}
 		        }
 			}
@@ -112,7 +96,7 @@ public class DadosEmpresa extends JFrame {
 		List<Empresa> c=new Empresa().Achartodos();
 		List y=null;
 		int cont=0;
-		Object[][] ob=new String[c.size()][7];
+		Object[][] ob=new String[c.size()][8];
         int i=0;
         for (Empresa mov : c) {
             ob[i][0]=String.valueOf(mov.getID());
@@ -127,12 +111,7 @@ public class DadosEmpresa extends JFrame {
         }
 		
 		tabelateste.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Tela", "FX550", "SP", "2"},
-				{"Retrovisor", "M9J", "RJ", "3"},
-				{"Aviao", "F15", "MG", "1"},
-				{"Carro", "F1", "SC", "7"},
-			},
+				ob,
 			new String[] {
 				"ID","Nome", "Endereço", "Cnpj", "Cep","Ramo","Agrotoxico","Toxicidade"
 
@@ -158,8 +137,14 @@ public class DadosEmpresa extends JFrame {
 		contentPane.add(lblDados);
 		contentPane.add(scrollPane);
 		
-		JButton btVoltar = new JButton("Voltar");
-		btVoltar.setBounds(247, 281, 61, 23);
-		contentPane.add(btVoltar);
+		JButton btnInserir = new JButton("Inserir");
+		btnInserir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddEmpresa addemp=new AddEmpresa();
+				addemp.show();
+			}
+		});
+		btnInserir.setBounds(55, 281, 88, 23);
+		contentPane.add(btnInserir);
 	}
 }

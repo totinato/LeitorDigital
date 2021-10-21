@@ -68,5 +68,29 @@ public class Empresa {
 		List<Empresa> b=dao.findAll();
 		return b;
 	}
+	public void Inserir() {
+		try {
+			dao.salvar(this);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void Atualizar() {
+		try {
+			dao.update(this);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void excluir() {
+		try {
+			dao.delete(this);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

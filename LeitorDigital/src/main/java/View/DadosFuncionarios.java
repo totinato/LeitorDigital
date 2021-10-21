@@ -51,7 +51,7 @@ public class DadosFuncionarios extends JFrame {
 	 */
 	public DadosFuncionarios(int a) {
 		setTitle("Editar Usu\u00E1rios");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 581, 519);
 		
 		JMenuBar menuBar = new JMenuBar();
