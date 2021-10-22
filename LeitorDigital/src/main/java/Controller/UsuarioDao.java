@@ -12,8 +12,8 @@ public class UsuarioDao extends DAO {
 			open();
 			stmt = con.prepareStatement("insert into Usuario values(null,?,?,?)");
 			stmt.setString(1, p.getNome());
-			stmt.setInt(2,p.getPermissao());
-			stmt.setString(3,p.getHashdigital().toString());
+			stmt.setInt(3,p.getPermissao());
+			stmt.setString(2,p.getHashdigital().toString());
 			stmt.execute();
 			stmt.close();
 			close();
@@ -22,23 +22,21 @@ public class UsuarioDao extends DAO {
 		public void delete(Usuario p) throws Exception {
 
 			open();
-			stmt = con.prepareStatement("delete from Usuario where idUsuario = ?");
+			stmt = con.prepareStatement("delete from Usuario where ID = ?");
 			stmt.setInt(1, p.getID());
 			stmt.execute();
 			stmt.close();
 			close();
-			/**/
 		}
 
 		public void update(Usuario p) throws Exception {
 
 			open();
-			stmt = con.prepareStatement("update Usuario set nome = ?, email = ? where idUsuario = ?");
+			stmt = con.prepareStatement("update Usuario set nome = ?, Hash = ?,Permissao= ? where ID = ?");
 			stmt.setString(1, p.getNome());
 			stmt.setString(2, p.getHashdigital().toString());
 			stmt.setInt(3, p.getPermissao());
 			stmt.setInt(4, p.getID());
-
 			stmt.execute();
 			stmt.close();
 			close();

@@ -73,6 +73,31 @@ public class Usuario {
 		List<Usuario> b=dao.findAll();
 		return b;
 	}
+	public void Salvar() {
+		try {
+			dao.update(this);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void Adicionar() {
+		try {
+			dao.salvar(this);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public void Excluir() {
+		try {
+			dao.delete(this);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 		
 		
 	
