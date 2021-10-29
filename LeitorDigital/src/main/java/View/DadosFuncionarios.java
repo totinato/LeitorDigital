@@ -175,7 +175,7 @@ public class DadosFuncionarios extends JFrame {
 							lblHash.setText(i);
 							lblDigitalConf.setForeground(new Color(34, 139, 34));
 							if(lblDigitalConf.getText()=="Digital Carregada Com Sucesso") {
-								JOptionPane.showConfirmDialog(null, "Digital Atualizada Salve para confirmar");
+								JOptionPane.showMessageDialog(null, "Digital Atualizada Salve para confirmar");
 								
 							}
 							lblDigitalConf.setText("Digital Carregada Com Sucesso");

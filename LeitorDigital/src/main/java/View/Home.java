@@ -88,6 +88,18 @@ public class Home extends JFrame {
 			}
 		});
 		mnNveis.add(opcEmpresa);
+		
+		JMenu mnSair = new JMenu("Sair");
+		mnSair.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Home.this.dispose();
+				TelaInicial t=new TelaInicial();
+				t.show();
+			}
+		});
+		mnSair.setForeground(Color.RED);
+		menuBar.add(mnSair);
 		if(u.getPermissao()==3) {
 			mnNveis.setEnabled(true);
 			JOptionPane.showMessageDialog(null,"seja bem vindo Administrador "+u.getNome());
