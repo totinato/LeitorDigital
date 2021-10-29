@@ -69,7 +69,7 @@ public class TelaInicial extends JFrame {
 			         java.io.File f = file.getSelectedFile();
 			         UsuarioController u=new UsuarioController();
 			         try {
-						String i=u.GerarHash(f);
+						String i=u.gerarHash(f);
 						
 						UsuarioDao logar= new UsuarioDao();
 						Usuario login=null;

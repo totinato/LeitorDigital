@@ -5,11 +5,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>APS</name>
   <dependencies>
-	  <dependency>
-		<groupId>dev.brachtendorf</groupId>
-		<artifactId>JImageHash</artifactId>
-		<version>1.0.0</version>
-	</dependency>
 	
 	<!-- If you want to use the database image matcher you need to add h2 as well -->
 	<dependency>

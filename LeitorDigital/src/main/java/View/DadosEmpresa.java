@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.lang.model.element.NestingKind;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -96,27 +97,51 @@ public class DadosEmpresa extends JFrame {
 		List<Empresa> c=new Empresa().Achartodos();
 		List y=null;
 		int cont=0;
-		Object[][] ob=new String[c.size()][8];
+		int qtddados=0;
+		if(a==1) {
+			qtddados=3;
+		}else if(a==2) {
+			qtddados=6;
+		}
+		else {
+			qtddados=8;
+		}
+		String[] titulos=new String[qtddados];
+		if(a>=1) {
+			titulos[0]="ID";
+			titulos[1]="Nome";
+			titulos[2]="Cep";
+		}
+		if(a>=2) {
+			titulos[3]="Cnpj";
+			titulos[4]="Endereço";
+			titulos[5]="Ramo";
+		}
+		if(a>=3) {
+			titulos[6]="Agrotoxico";
+			titulos[7]="Toxicidade";
+		}
+		
+		Object[][] ob=new String[c.size()][qtddados];
         int i=0;
         for (Empresa mov : c) {
             ob[i][0]=String.valueOf(mov.getID());
             ob[i][1]=String.valueOf(mov.getNome());
-            ob[i][2]=String.valueOf(mov.getEndereco());
-            ob[i][3]=String.valueOf(mov.getCnpj());
-            ob[i][4]=String.valueOf(mov.getCep());
-            ob[i][5]=String.valueOf(mov.getRamo());
-            ob[i][6]=String.valueOf(mov.getAgrotoxico());
-            ob[i][7]=String.valueOf(mov.getToxidade());
+            ob[i][2]=String.valueOf(mov.getCep());
+            if(a>1) {
+	            ob[i][3]=String.valueOf(mov.getCnpj());
+	            ob[i][4]=String.valueOf(mov.getEndereco());
+	            ob[i][5]=String.valueOf(mov.getRamo());
+		            if(a==3) {
+		            ob[i][6]=String.valueOf(mov.getAgrotoxico());
+		            ob[i][7]=String.valueOf(mov.getToxidade());
+		            }
+            }
             i++;
         }
+        
 		
-		tabelateste.setModel(new DefaultTableModel(
-				ob,
-			new String[] {
-				"ID","Nome", "Endereço", "Cnpj", "Cep","Ramo","Agrotoxico","Toxicidade"
-
-			}
-		) {
+		tabelateste.setModel(new DefaultTableModel(ob,titulos) {
 			boolean[] columnEditables = new boolean[] {
 				false, false, false, false
 			};
@@ -124,14 +149,6 @@ public class DadosEmpresa extends JFrame {
 				return columnEditables[column];
 			}
 		});
-		tabelateste.getColumnModel().getColumn(0).setResizable(false);
-		tabelateste.getColumnModel().getColumn(0).setPreferredWidth(100);
-		tabelateste.getColumnModel().getColumn(1).setResizable(false);
-		tabelateste.getColumnModel().getColumn(1).setPreferredWidth(100);
-		tabelateste.getColumnModel().getColumn(2).setResizable(false);
-		tabelateste.getColumnModel().getColumn(2).setPreferredWidth(100);
-		tabelateste.getColumnModel().getColumn(3).setResizable(false);
-		tabelateste.getColumnModel().getColumn(3).setPreferredWidth(100);
 		tabelateste.setForeground(Color.BLACK);
 		contentPane.setLayout(null);
 		contentPane.add(lblDados);

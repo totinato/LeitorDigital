@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 import Controller.UsuarioController;
-import javafx.util.converter.BigIntegerStringConverter;
+
 
 public class Usuario {
 	private String Nome;
@@ -20,10 +20,10 @@ public class Usuario {
 	public String getHashdigital() {
 		return hashdigital;
 	}
-	public void setHashdigital(File digital){
+	public void setHashdigital(File digital) throws Exception{
 		UsuarioController u= new UsuarioController();
 		try {
-			hashdigital=u.GerarHash(digital);
+			hashdigital=u.gerarHash(digital);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

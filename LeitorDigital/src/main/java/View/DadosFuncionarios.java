@@ -171,7 +171,7 @@ public class DadosFuncionarios extends JFrame {
 			         java.io.File f = file.getSelectedFile();
 			         UsuarioController u=new UsuarioController();
 						try {
-							String i=u.GerarHash(f);
+							String i=u.gerarHash(f);
 							lblHash.setText(i);
 							lblDigitalConf.setForeground(new Color(34, 139, 34));
 							if(lblDigitalConf.getText()=="Digital Carregada Com Sucesso") {
@@ -181,6 +181,9 @@ public class DadosFuncionarios extends JFrame {
 							lblDigitalConf.setText("Digital Carregada Com Sucesso");
 							
 						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
