@@ -69,7 +69,7 @@ public class Home extends JFrame {
 		lblUsuarioNivel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblNivel = new JLabel("ID: "+u.getID());
-		mnNveis.setEnabled(false);
+		mnNveis.setEnabled(true);
 		
 		JMenuItem opcUsuario = new JMenuItem("Usuarios");
 		opcUsuario.addActionListener(new ActionListener() {
@@ -101,15 +101,17 @@ public class Home extends JFrame {
 		mnSair.setForeground(Color.RED);
 		menuBar.add(mnSair);
 		if(u.getPermissao()==3) {
-			mnNveis.setEnabled(true);
 			JOptionPane.showMessageDialog(null,"seja bem vindo Administrador "+u.getNome());
 		}
 		if(u.getPermissao()==2) {
 			JOptionPane.showMessageDialog(null,"seja bem vindo Usuario "+u.getNome());
+			opcUsuario.setEnabled(false);
+			
 			
 		}
 		if(u.getPermissao()==1) {
 			JOptionPane.showMessageDialog(null,"seja bem vindo visitante "+u.getNome());
+			opcUsuario.setEnabled(false);
 			
 		}
 		lblNivel.setEnabled(false);
