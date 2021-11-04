@@ -60,7 +60,7 @@ public class DadosFuncionarios extends JFrame {
 	 * Launch the application.
 	 */
 	public DadosFuncionarios(int a) {
-		setTitle("Editar Usu\u00E1rios");
+		setTitle("Agro Visual - Editar Usu\u00E1rios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 581, 519);
 		contentPane = new JPanel();

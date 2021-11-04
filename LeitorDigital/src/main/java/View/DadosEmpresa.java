@@ -52,7 +52,7 @@ public class DadosEmpresa extends JFrame {
 	 * Launch the application.
 	 */
 	public DadosEmpresa(int a) {
-		setTitle("Dados dos Funcion\u00E1rios");
+		setTitle("AgroVisual - Dados dos Empresa");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 581, 388);
@@ -60,7 +60,7 @@ public class DadosEmpresa extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblDados = new JLabel("Dados do funcionario");
+		JLabel lblDados = new JLabel("Dados do Empresa");
 		lblDados.setBounds(15, 19, 101, 14);
 		
 		JScrollPane scrollPane = new JScrollPane();

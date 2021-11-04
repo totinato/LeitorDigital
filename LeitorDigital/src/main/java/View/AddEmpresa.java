@@ -35,7 +35,7 @@ public class AddEmpresa extends JFrame {
 	private JTextField txtAgrotoxico;
 	private JTextField txtToxidade;
 	public AddEmpresa() {
-		setTitle("Adicionar");
+		setTitle("AgroVisual - Adicionar");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 446, 546);
 		contentPane = new JPanel();

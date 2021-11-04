@@ -35,7 +35,7 @@ public class EditarEmpresa extends JFrame {
 	private JTextField txtAgrotoxico;
 	private JTextField txtToxidade;
 	public EditarEmpresa(Empresa e) {
-		setTitle("Editar");
+		setTitle("AgroVisual - Editar");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 446, 546);
 		contentPane = new JPanel();

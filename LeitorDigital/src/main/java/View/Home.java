@@ -43,6 +43,7 @@ public class Home extends JFrame {
 	 * Launch the application.
 	 */
 	public Home(Usuario u) {
+		setTitle("AgroVisual - Inicio");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 390, 239);
 		
