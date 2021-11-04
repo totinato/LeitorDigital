@@ -157,6 +157,7 @@ public class DadosEmpresa extends JFrame {
 		JButton btnInserir = new JButton("Inserir");
 		if(a==1 || a==2) {
 			btnInserir.setEnabled(false);
+			
 		}
 		btnInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
